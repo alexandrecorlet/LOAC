@@ -11,6 +11,7 @@ module somador(
   output logic signed [NUM_BITS-1:0] S,
   output logic Z, N, P
   );
+
   always_comb begin
     // Compute sum of A and B and store it on S
     S <= A + B;
@@ -22,4 +23,5 @@ module somador(
     // this is done by checking the LSB is or 0 or 1.
     P <= S[0] == 0;
   end
+
 endmodule
