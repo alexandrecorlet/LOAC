@@ -18,7 +18,7 @@ module somador(
     // Check if S == 0, if S == 0, then Z := 1, otherwise set Z := 0
     Z <= S == 0;
     // Check if S < 0. If S < 0, then N := 1, otherwise N := 0
-    N <= S < N;
+    N <= S < 0;
     // Check if S is even or odd. If S is even, then P := 1, otherwise P := 0
     // this is done by checking the LSB is or 0 or 1.
     P <= S[0] == 0;
