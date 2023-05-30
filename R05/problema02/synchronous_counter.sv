@@ -13,7 +13,7 @@ module synchronous_counter(
   output logic [NUM_BITS-1:0] Saida
 );
   
-  always_ff @(posedge reset or posedge clk) begin
+  always_ff @(posedge clk) begin
   
     if (reset)
       Saida <= 1;		
