@@ -9,7 +9,7 @@ parameter NUM_BITS = 1;			    // Define maximum number of bits
 
 module FSM_even_parity_checker(
   input clk, reset, input_bit,      // Input variables
-  output Saida                      // Output variable 
+  output logic Saida                // Output variable 
 );
   
   enum logic [NUM_BITS-1 : 0] {IMPAR, PAR} state;   // Define all possible states of the FSM

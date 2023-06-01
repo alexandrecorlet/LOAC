@@ -10,7 +10,7 @@ parameter NUM_BITS = 2;
 module FSM_alarm(
   input clk, reset,
   input lamp1, lamp2, lamp3,
-  output alarm_bit
+  output logic alarm_bit
 );
 
   // Create all possible states
