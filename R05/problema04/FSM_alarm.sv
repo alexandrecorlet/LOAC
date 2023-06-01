@@ -5,7 +5,7 @@
  * @matricula 119210883
  */
 
-parameter NUM_BITS = 3;
+parameter NUM_BITS = 2;
 
 module FSM_alarm(
   input clk, reset,
@@ -19,7 +19,6 @@ module FSM_alarm(
     LAMP1_ON,   // Lamp 1 is on
     LAMP2_ON,	// Lamp 2 is on
     LAMP3_ON,	// Lamp 3 is on
-    ALARM		// Sound the alarm if the sequence LAMP1_ON -> LAMP2_ON -> LAMP3_ON has happened
   } state;
   
   always_ff @(posedge clk)
@@ -55,9 +54,6 @@ module FSM_alarm(
             // Lamp2 was turned on, therefore go back to IDLE (broke the sequence)
             state <= IDLE;
         LAMP3_ON:
-          // LAMP1_ON -> LAMP2_ON -> LAMP3_ON was detected, therefore go to ALARM state
-          state <= ALARM;
-        ALARM:
           if (lamp1)
             // lamp1 is on while in ALARM state, turn off the alarm and go to LAMP1_ON state
             state <= LAMP1_ON;
@@ -66,6 +62,6 @@ module FSM_alarm(
             state <= IDLE;
       endcase
   
-  always_comb alarm_bit <= (state == ALARM);	// Sound the alarm!
+  always_comb alarm_bit <= (state == LAMP3_ON);	// Sound the alarm!
   
 endmodule
