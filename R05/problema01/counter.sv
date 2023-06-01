@@ -1,31 +1,30 @@
 /*
  * LOAC 2022.2
- * Roteiro 05 - Problema 01
+ * Roteiro 05 - Problema 01: Contador Sincrono (Modulo 16)
  * @author Alexandre B. Corlet dos Santos
  * @matricula 119210883
  */
 
-parameter NUM_BITS = 4;
-parameter N = 15;
+parameter NUM_BITS = 4;					// Define maximum number of bits
 
-module synchronous_counter(
-  input logic clk, reset, Sel,
-  output logic [NUM_BITS-1:0] Saida
+module mod_16_synchronous_counter(
+  input logic clk, reset, count_down, 	// Input variables
+  output logic [NUM_BITS-1 : 0] Saida	// Output variable (Counter)
 );
-      
+  
   always_ff @(posedge clk) begin
+    
     if (reset)
-      if (Sel)
-        Saida <= N;
+      if (count_down)
+        Saida <= 15;					// Reset counter to maximum possible val
       else
-        Saida <= 0; 
+        Saida <= 0;						// Reset counter to 0
     else
-      if (Sel)
-        // Count down [15 .. 0]
-        Saida <= (Saida + N ) % (N+1);
+      if (count_down)
+        Saida <= Saida - 1;				// Decrement Saida by one
       else
-        // Count up [0 .. 15]
-        Saida <= (Saida + 1) % (N+1);
+        Saida <= Saida + 1;				// Increment Saida by one
+  
   end
   
-endmodule
+endmodule 
