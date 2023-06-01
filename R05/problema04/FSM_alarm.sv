@@ -18,7 +18,7 @@ module FSM_alarm(
     IDLE,		// All lamps are turned off
     LAMP1_ON,   // Lamp 1 is on
     LAMP2_ON,	// Lamp 2 is on
-    LAMP3_ON,	// Lamp 3 is on
+    LAMP3_ON	// Lamp 3 is on
   } state;
   
   always_ff @(posedge clk)
