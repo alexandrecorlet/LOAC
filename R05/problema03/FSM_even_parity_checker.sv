@@ -7,7 +7,7 @@
 
 parameter NUM_BITS = 1;			    // Define maximum number of bits
 
-module FSM_parity_checker(
+module FSM_even_parity_checker(
   input clk, reset, input_bit,      // Input variables
   output Saida                      // Output variable 
 );
